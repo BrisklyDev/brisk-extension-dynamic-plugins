@@ -5,13 +5,13 @@
       "hostname": "aniwatchtv.to",
       "rules": [
         {
-          "name": "animeName",
+          "name": "anime-name",
           "selector": "h2.film-name a",
           "property": "textContent",
           "transform": "trim"
         },
         {
-          "name": "notice",
+          "name": "episode-number",
           "selector": ".server-notice strong b",
           "property": "textContent",
           "transform": [
