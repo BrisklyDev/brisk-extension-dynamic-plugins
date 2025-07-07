@@ -3,7 +3,7 @@
   "resolvers": [
     {
       "hostname": "aniwatchtv.to",
-      "rules": [
+      "parts": [
         {
           "name": "animeName",
           "selector": "h2.film-name a",
