@@ -25,6 +25,47 @@
           ]
         },
         {
+          "name": "seasonNumber",
+          "selector": "@{animeName}",
+          "transform": [
+            {
+              "type": "match",
+              "regex": "Season\\s+(\\d+)",
+              "flags": "i",
+              "matchIndex": 1,
+              "required": true
+            },
+            {
+              "type": "padStart",
+              "number": 2,
+              "fillString": "0"
+            }
+          ]
+        },
+        {
+          "name": "animeNameWithoutSeasonNumber",
+          "selector": "@{animeName}",
+          "transform": [
+            {
+              "type": "replace",
+              "regex": "Season\\s+\\d+",
+              "flags": "i",
+              "replacer": "",
+              "required": true
+            },
+            {
+              "type": "replace",
+              "regex": "[\\\\/:*?\"<>|=]",
+              "replacer": "."
+            },
+            {
+              "type": "replace",
+              "regex": "\\s+",
+              "replacer": "."
+            }
+          ]
+        },
+        {
           "name": "episodeNumber",
           "selector": ".server-notice strong b",
           "property": "textContent",
@@ -45,9 +86,39 @@
           ]
         }
       ],
+      "outputs": [
+        {
+          "isAllNotNull": [
+            "seasonNumber",
+            "episodeNumber",
+            "animeName",
+            "animeNameWithoutSeasonNumber"
+          ],
+          "format": "{animeNameWithoutSeasonNumber}.S{seasonNumber}.E{episodeNumber}"
+        },
+        {
+          "isAllNull": [
+            "seasonNumber",
+            "episodeNumber",
+            "animeName"
+          ],
+          "format": ""
+        },
+        {
+          "isAnyNull": [
+            "seasonNumber"
+          ],
+          "format": "animeName.episodeNumber"
+        },
+        {
+          "isAnyNull": [
+            "{episodeNumber}"
+          ],
+          "format": "{animeName}"
+        }
+      ],
       "output": {
-        "format": "{animeName}.{episodeNumber}",
-        "fallback": "{animeName}"
+        "format": "{animeName}.{episodeNumber}"
       }
     }
   ]
