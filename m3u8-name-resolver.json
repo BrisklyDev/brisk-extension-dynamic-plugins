@@ -487,6 +487,9 @@
               "replacer": ""
             },
             {
+              "type": "trim"
+            },
+            {
               "type": "replace",
               "regex": "\\.$",
               "replacer": ""
