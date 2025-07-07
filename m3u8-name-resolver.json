@@ -67,6 +67,7 @@
             {
               "type": "match",
               "regex": "\\b\\d+\\b",
+              "flags": "i",
               "matchIndex": 0
             },
             {
