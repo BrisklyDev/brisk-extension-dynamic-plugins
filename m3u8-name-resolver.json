@@ -20,7 +20,7 @@
             },
             {
               "type": "regex",
-              "pattern": "/\\b\\d+\\b/g",
+              "pattern": "\\b\\d+\\b",
               "matchIndex": 0
             },
             {
