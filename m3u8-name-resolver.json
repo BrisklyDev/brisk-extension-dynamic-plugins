@@ -21,7 +21,7 @@
             {
               "type": "match",
               "regex": "Season\\s+(\\d+)",
-              "flags": "gi",
+              "flags": "i",
               "matchIndex": 1,
               "required": true
             },
