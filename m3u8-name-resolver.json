@@ -39,14 +39,14 @@
             {
               "type": "replace",
               "regex": "Season\\s+\\d+",
-              "flags": "gi",
+              "flags": "i",
               "replacer": "",
               "required": true
             },
             {
               "type": "replace",
               "regex": "[\\\\/:*?\"<>|=]",
-              "flags": "gi",
+              "flags": "i",
               "replacer": "."
             },
             {
