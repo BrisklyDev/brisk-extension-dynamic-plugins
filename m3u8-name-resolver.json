@@ -53,6 +53,9 @@
               "replacer": ""
             },
             {
+              "type": "trim"
+            },
+            {
               "type": "replace",
               "regex": "\\s+",
               "replacer": "."
