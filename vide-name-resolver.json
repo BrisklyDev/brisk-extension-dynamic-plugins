@@ -1,0 +1,33 @@
+{
+  "version": "0.0.1",
+  "resolvers": [
+    {
+      "hostname": "aniwatchtv.to",
+      "rules": [
+        {
+          "name": "animeName",
+          "selector": "h2.film-name a",
+          "property": "textContent",
+          "transform": "trim"
+        },
+        {
+          "name": "notice",
+          "selector": ".server-notice strong b",
+          "property": "textContent",
+          "transform": "trim",
+          "regex": "/\\b\\d+\\b/g",
+          "matchIndex": 0
+        },
+        {
+          "name": "epNum",
+          "selector": "@{notice}",
+          "transform": "padStart(2,'0')"
+        }
+      ],
+      "output": {
+        "format": "{animeName}.{epNum}",
+        "fallback": "{animeName}"
+      }
+    }
+  ]
+}
