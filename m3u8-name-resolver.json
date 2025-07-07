@@ -108,10 +108,7 @@
           ],
           "format": "{animeName}"
         }
-      ],
-      "output": {
-        "format": "{animeName}.{episodeNumber}"
-      }
+      ]
     }
   ]
 }
