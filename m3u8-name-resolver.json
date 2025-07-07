@@ -14,14 +14,21 @@
           "name": "notice",
           "selector": ".server-notice strong b",
           "property": "textContent",
-          "transform": "trim",
-          "regex": "/\\b\\d+\\b/g",
-          "matchIndex": 0
-        },
-        {
-          "name": "epNum",
-          "selector": "@{notice}",
-          "transform": "padStart(2,'0')"
+          "transform": [
+            {
+              "type": "trim"
+            },
+            {
+              "type": "regex",
+              "pattern": "/\\b\\d+\\b/g",
+              "matchIndex": 0
+            },
+            {
+              "type": "padStart",
+              "number": 2,
+              "fillString": "0"
+            }
+          ]
         }
       ],
       "output": {
