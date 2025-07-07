@@ -5,13 +5,13 @@
       "hostname": "aniwatchtv.to",
       "rules": [
         {
-          "name": "anime-name",
+          "name": "animeName",
           "selector": "h2.film-name a",
           "property": "textContent",
           "transform": "trim"
         },
         {
-          "name": "episode-number",
+          "name": "episodeNumber",
           "selector": ".server-notice strong b",
           "property": "textContent",
           "transform": [
@@ -32,7 +32,7 @@
         }
       ],
       "output": {
-        "format": "{animeName}.{epNum}",
+        "format": "{animeName}.{episodeNumber}",
         "fallback": "{animeName}"
       }
     }
