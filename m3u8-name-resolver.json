@@ -156,6 +156,162 @@
           "format": "{animeNameFormatted}"
         }
       ]
+    },
+    {
+      "hostname": "hianimez.to",
+      "parts": [
+        {
+          "name": "animeName",
+          "selector": "h2.film-name a",
+          "property": "textContent",
+          "transform": [
+            {
+              "type": "trim"
+            }
+          ]
+        },
+        {
+          "name": "animeNameFormatted",
+          "selector": "@{animeName}",
+          "transform": [
+            {
+              "type": "trim"
+            },
+            {
+              "type": "replace",
+              "regex": "Season\\s+\\d+",
+              "flags": "i",
+              "replacer": ""
+            },
+            {
+              "type": "replace",
+              "regex": "[\\\\/:*?\"<>|=]",
+              "flags": "i",
+              "replacer": ""
+            },
+            {
+              "type": "trim"
+            },
+            {
+              "type": "replace",
+              "regex": "\\s+",
+              "replacer": "."
+            }
+          ]
+        },
+        {
+          "name": "seasonNumber",
+          "selector": "@{animeName}",
+          "transform": [
+            {
+              "type": "match",
+              "regex": "Season\\s+(\\d+)",
+              "flags": "i",
+              "matchIndex": 1,
+              "required": true
+            },
+            {
+              "type": "padStart",
+              "number": 2,
+              "fillString": "0"
+            }
+          ]
+        },
+        {
+          "name": "animeNameWithoutSeason",
+          "selector": "@{animeName}",
+          "transform": [
+            {
+              "type": "trim"
+            },
+            {
+              "type": "replace",
+              "regex": "Season\\s+\\d+",
+              "flags": "i",
+              "replacer": "",
+              "required": true
+            },
+            {
+              "type": "replace",
+              "regex": "[\\\\/:*?\"<>|=]",
+              "flags": "i",
+              "replacer": ""
+            },
+            {
+              "type": "trim"
+            },
+            {
+              "type": "replace",
+              "regex": "\\s+",
+              "replacer": "."
+            }
+          ]
+        },
+        {
+          "name": "episodeNumber",
+          "selector": ".server-notice strong b",
+          "property": "textContent",
+          "transform": [
+            {
+              "type": "trim"
+            },
+            {
+              "type": "match",
+              "regex": "\\b\\d+\\b",
+              "flags": "i",
+              "matchIndex": 0
+            },
+            {
+              "type": "padStart",
+              "number": 2,
+              "fillString": "0"
+            }
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "validation": {
+            "type": "isAllNotNull",
+            "values": [
+              "seasonNumber",
+              "episodeNumber",
+              "animeNameFormatted",
+              "animeNameWithoutSeason"
+            ]
+          },
+          "format": "{animeNameWithoutSeason}.S{seasonNumber}.E{episodeNumber}"
+        },
+        {
+          "validation": {
+            "type": "isAllNull",
+            "values": [
+              "seasonNumber",
+              "episodeNumber",
+              "animeName"
+            ]
+          },
+          "format": ""
+        },
+        {
+          "validation": {
+            "type": "isAnyNull",
+            "values": [
+              "seasonNumber"
+            ]
+          },
+          "format": "{animeNameFormatted}.{episodeNumber}"
+        },
+        {
+          "validation": {
+            "isAnyNull": "isAnyNull",
+            "values": [
+              "episodeNumber"
+            ]
+          },
+          "format": "{animeNameFormatted}"
+        }
+      ]
     }
   ]
 }
