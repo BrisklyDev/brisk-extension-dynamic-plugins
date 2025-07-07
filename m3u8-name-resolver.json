@@ -50,7 +50,7 @@
               "type": "replace",
               "regex": "[\\\\/:*?\"<>|=]",
               "flags": "i",
-              "replacer": "."
+              "replacer": ""
             },
             {
               "type": "replace",
