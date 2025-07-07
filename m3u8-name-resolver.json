@@ -527,7 +527,7 @@
       ]
     },
     {
-      "hostname": "atob(aGFuaW1lLnR2)",
+      "hostname": "[atob(aGFuaW1lLnR2)]",
       "parts": [
         {
           "name": "title",
