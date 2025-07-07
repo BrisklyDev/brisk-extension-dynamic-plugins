@@ -15,6 +15,35 @@
           ]
         },
         {
+          "name": "animeNameFormatted",
+          "selector": "@{animeName}",
+          "transform": [
+            {
+              "type": "trim"
+            },
+            {
+              "type": "replace",
+              "regex": "Season\\s+\\d+",
+              "flags": "i",
+              "replacer": ""
+            },
+            {
+              "type": "replace",
+              "regex": "[\\\\/:*?\"<>|=]",
+              "flags": "i",
+              "replacer": ""
+            },
+            {
+              "type": "trim"
+            },
+            {
+              "type": "replace",
+              "regex": "\\s+",
+              "replacer": "."
+            }
+          ]
+        },
+        {
           "name": "seasonNumber",
           "selector": "@{animeName}",
           "transform": [
@@ -91,7 +120,7 @@
             "values": [
               "seasonNumber",
               "episodeNumber",
-              "animeName",
+              "animeNameFormatted",
               "animeNameWithoutSeason"
             ]
           },
@@ -115,7 +144,7 @@
               "seasonNumber"
             ]
           },
-          "format": "{animeName}.{episodeNumber}"
+          "format": "{animeNameFormatted}.{episodeNumber}"
         },
         {
           "validation": {
@@ -124,7 +153,7 @@
               "episodeNumber"
             ]
           },
-          "format": "{animeName}"
+          "format": "{animeNameFormatted}"
         }
       ]
     }
