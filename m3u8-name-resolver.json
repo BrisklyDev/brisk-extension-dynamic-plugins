@@ -532,6 +532,7 @@
         {
           "name": "title",
           "selector": ".tv-title",
+          "property": "textContent",
           "transform": [
             {
               "type": "trim"
