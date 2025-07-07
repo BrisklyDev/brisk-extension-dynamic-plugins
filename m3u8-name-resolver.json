@@ -115,7 +115,7 @@
               "seasonNumber"
             ]
           },
-          "format": "animeName.episodeNumber"
+          "format": "{animeName}.{episodeNumber}"
         },
         {
           "validation": {
