@@ -80,32 +80,44 @@
       ],
       "outputs": [
         {
-          "isAllNotNull": [
-            "seasonNumber",
-            "episodeNumber",
-            "animeName",
-            "animeNameWithoutSeason"
-          ],
+          "validation": {
+            "type": "isAllNotNull",
+            "values": [
+              "seasonNumber",
+              "episodeNumber",
+              "animeName",
+              "animeNameWithoutSeason"
+            ]
+          },
           "format": "{animeNameWithoutSeason}.S{seasonNumber}.E{episodeNumber}"
         },
         {
-          "isAllNull": [
-            "seasonNumber",
-            "episodeNumber",
-            "animeName"
-          ],
+          "validation": {
+            "type": "isAllNull",
+            "values": [
+              "seasonNumber",
+              "episodeNumber",
+              "animeName"
+            ]
+          },
           "format": ""
         },
         {
-          "isAnyNull": [
-            "seasonNumber"
-          ],
+          "validation": {
+            "type": "isAnyNull",
+            "values": [
+              "seasonNumber"
+            ]
+          },
           "format": "animeName.episodeNumber"
         },
         {
-          "isAnyNull": [
-            "{episodeNumber}"
-          ],
+          "validation": {
+            "isAnyNull": "isAnyNull",
+            "values": [
+              "episodeNumber"
+            ]
+          },
           "format": "{animeName}"
         }
       ]
