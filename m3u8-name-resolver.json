@@ -37,6 +37,9 @@
           "selector": "@{animeName}",
           "transform": [
             {
+              "type": "trim"
+            },
+            {
               "type": "replace",
               "regex": "Season\\s+\\d+",
               "flags": "i",
