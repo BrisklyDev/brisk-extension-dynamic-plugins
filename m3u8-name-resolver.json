@@ -11,16 +11,6 @@
           "transform": [
             {
               "type": "trim"
-            },
-            {
-              "type": "replace",
-              "regex": "[\\\\/:*?\"<>|=]",
-              "replacer": "."
-            },
-            {
-              "type": "replace",
-              "regex": "\\s+",
-              "replacer": "."
             }
           ]
         },
